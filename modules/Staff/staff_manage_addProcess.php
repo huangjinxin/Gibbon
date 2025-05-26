@@ -94,7 +94,7 @@ if (isActionAccessible($guid, $connection2, '/modules/Staff/staff_manage_add.php
         }
 
         if ($result->rowCount() > 0) {
-            $URL .= '&return=error3';
+            $URL .= '&return=error7';
             header("Location: {$URL}");
         } else {
             //Write to database

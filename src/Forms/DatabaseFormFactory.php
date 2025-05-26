@@ -382,7 +382,7 @@ class DatabaseFormFactory extends FormFactory
         $data = ['gibbonPersonIDList' => implode(',', $people)];
         $sql = "SELECT gibbonPerson.gibbonPersonID, title, surname, preferredName, username
                 FROM gibbonPerson
-                WHERE status='Full'
+                WHERE (gibbonPerson.status='Full' OR gibbonPerson.status='Expected')
                 AND FIND_IN_SET(gibbonPersonID, :gibbonPersonIDList)
                 ORDER BY FIND_IN_SET(gibbonPersonID, :gibbonPersonIDList), surname, preferredName";
 

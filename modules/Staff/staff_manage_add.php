@@ -19,11 +19,12 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-use Gibbon\Domain\System\SettingGateway;
 use Gibbon\Http\Url;
 use Gibbon\Forms\Form;
 use Gibbon\Forms\CustomFieldHandler;
 use Gibbon\Forms\DatabaseFormFactory;
+use Gibbon\Domain\Staff\StaffGateway;
+use Gibbon\Domain\System\SettingGateway;
 
 if (isActionAccessible($guid, $connection2, '/modules/Staff/staff_manage_add.php') == false) {
     // Access denied
@@ -51,6 +52,8 @@ if (isActionAccessible($guid, $connection2, '/modules/Staff/staff_manage_add.php
         $page->navigator->addSearchResultsAction(Url::fromModuleRoute('Staff', 'staff_manage.php')->withQueryParams($params));
     }
 
+    $potentialStaff = $container->get(StaffGateway::class)->selectPotentialStaff()->fetchAll(\PDO::FETCH_COLUMN);
+
     $form = Form::create('action', $session->get('absoluteURL').'/modules/'.$session->get('module')."/staff_manage_addProcess.php?search=$search&allStaff=$allStaff");
     $form->setFactory(DatabaseFormFactory::create($pdo));
 
@@ -60,7 +63,7 @@ if (isActionAccessible($guid, $connection2, '/modules/Staff/staff_manage_add.php
 
     $row = $form->addRow();
         $row->addLabel('gibbonPersonID', __('Person'))->description(__('Must be unique.'));
-        $row->addSelectUsers('gibbonPersonID', $session->get('gibbonSchoolYearID'))->placeholder()->required();
+        $row->addSelectUsersFromList('gibbonPersonID', $potentialStaff)->placeholder()->required();
 
     $row = $form->addRow();
         $row->addLabel('initials', __('Initials'))->description(__('Must be unique if set.'));

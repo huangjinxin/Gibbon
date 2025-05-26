@@ -133,6 +133,18 @@ class StaffGateway extends QueryableGateway
         return $this->db()->select($sql, $data);
     }
 
+    public function selectPotentialStaff() {
+        $sql = "SELECT gibbonPerson.gibbonPersonID
+            FROM gibbonPerson 
+            JOIN gibbonRole ON (FIND_IN_SET(gibbonRole.gibbonRoleID, gibbonPerson.gibbonRoleIDAll))
+            LEFT JOIN gibbonStaff ON (gibbonStaff.gibbonPersonID=gibbonPerson.gibbonPersonID) 
+            WHERE gibbonStaff.gibbonStaffID IS NULL
+            AND gibbonRole.category='Staff'
+            GROUP BY gibbonPerson.gibbonPersonID";
+
+        return $this->db()->select($sql);
+    }
+
     public function getIsPreferredNameUnique($preferredName)
     {
         $data = array('preferredName' => $preferredName);

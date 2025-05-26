@@ -35,6 +35,7 @@ v30.0.00
         Reports: prevented deletion of template assets that are not set to inactive
         Planner: added a highlight for Off Timetable students in View Lesson Plan attendance list
         Planner: added a button to access Linked Markbook from Edit Lesson Plan page
+        Staff: limited Add Staff list to users who are not already staff but have a staff role
         Timetable: added staff duty and activity names to Staff Coverage layer on the timetable
 
     Bug Fixes
