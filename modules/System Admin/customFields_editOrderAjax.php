@@ -21,8 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 use Gibbon\Domain\System\CustomFieldGateway;
 
-$_POST['address'] = '/modules/System Admin/customFields.php';
-
 require_once '../../gibbon.php';
 
 if (isActionAccessible($guid, $connection2, '/modules/System Admin/customFields.php') == false) {

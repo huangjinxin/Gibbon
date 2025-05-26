@@ -21,8 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 use Gibbon\Module\Reports\Domain\ReportingCycleGateway;
 
-$_POST['address'] = '/modules/Reports/reporting_cycles_manage.php';
-
 require_once '../../gibbon.php';
 
 if (isActionAccessible($guid, $connection2, '/modules/Reports/reporting_cycles_manage.php') == false) {

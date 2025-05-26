@@ -21,8 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 use Gibbon\Domain\Library\LibraryShelfGateway;
 
-$_POST['address'] = '/modules/Library/library_manage_shelves.php';
-
 require_once '../../gibbon.php';
 
 if (isActionAccessible($guid, $connection2, '/modules/Library/library_manage_shelves.php') == false) {

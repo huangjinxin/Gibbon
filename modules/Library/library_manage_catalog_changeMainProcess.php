@@ -24,8 +24,6 @@ use Gibbon\Data\Validator;
 use Gibbon\Domain\Library\LibraryGateway;
 use Gibbon\Domain\Library\LibraryTypeGateway;
 
-$_POST['address'] = '/modules/Library/library_manage_catalog_edit.php';
-
 require_once '../../gibbon.php';
 include './moduleFunctions.php';
 

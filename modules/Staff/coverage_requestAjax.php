@@ -22,8 +22,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 use Gibbon\Services\Format;
 use Gibbon\Module\Staff\Forms\CoverageRequestForm;
 
-$_POST['address'] = '/modules/Staff/coverage_request.php';
-
 require_once '../../gibbon.php';
 
 $gibbonPersonID = $_POST['gibbonPersonID'] ?? '';

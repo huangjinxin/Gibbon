@@ -21,8 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 use Gibbon\Domain\Forms\FormFieldGateway;
 
-$_POST['address'] = '/modules/System Admin/formBuilder_page_edit.php';
-
 require_once '../../gibbon.php';
 
 if (isActionAccessible($guid, $connection2, '/modules/System Admin/formBuilder_page_edit.php') == false) {

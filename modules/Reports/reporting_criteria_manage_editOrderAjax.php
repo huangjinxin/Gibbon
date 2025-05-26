@@ -21,8 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 use Gibbon\Module\Reports\Domain\ReportingCriteriaGateway;
 
-$_POST['address'] = '/modules/Reports/reporting_scopes_manage_edit.php';
-
 require_once '../../gibbon.php';
 
 if (isActionAccessible($guid, $connection2, '/modules/Reports/reporting_scopes_manage_edit.php') == false) {

@@ -20,8 +20,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 use Gibbon\Data\Validator;
 use Gibbon\Domain\Activities\ActivityCategoryGateway;
 
-$_POST['address'] = '/modules/Activities/activities_categories.php';
-
 require_once '../../gibbon.php';
 
 $_POST = $container->get(Validator::class)->sanitize($_POST);

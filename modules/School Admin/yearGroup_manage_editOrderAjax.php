@@ -21,8 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 use Gibbon\Domain\School\YearGroupGateway;
 
-$_POST['address'] = '/modules/School Admin/yearGroup_manage.php';
-
 require_once '../../gibbon.php';
 
 if (isActionAccessible($guid, $connection2, '/modules/School Admin/yearGroup_manage.php') == false) {

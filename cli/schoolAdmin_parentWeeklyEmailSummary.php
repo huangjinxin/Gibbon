@@ -31,8 +31,6 @@ use Gibbon\Domain\School\SchoolYearGateway;
 use Gibbon\Domain\FormGroups\FormGroupGateway;
 use Gibbon\Domain\Planner\PlannerParentWeeklyEmailSummaryGateway;
 
-$_POST['address'] = '/modules/School Admin/emailSummarySettings.php';
-
 require __DIR__.'/../gibbon.php';
 
 $settingGateway = $container->get(SettingGateway::class);
