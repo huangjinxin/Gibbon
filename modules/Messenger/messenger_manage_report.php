@@ -395,7 +395,7 @@ else {
                         $row->addContent(!empty($recipient['confirmedTimestamp']) ? Format::date(substr($recipient['confirmedTimestamp'],0,10)).' '.substr($recipient['confirmedTimestamp'],11,5) : '');
 
                         if ($sender == true && $recipient['contactType'] == 'Email') {
-                            $required = ($recipient['sent'] != 'Y' || ($confirmationRequired[$recipient['gibbonPersonID']] ?? true)) && !empty($recipient['contactDetail']);
+                            $required = ($recipient['sent'] != 'Y' || ($confirmationRequired[$recipient['gibbonPersonID']] ?? true)) && !empty($recipient['contactDetail']) || $values['emailReceipt'] == 'N';
                             $row->onlyIf($required)
                                 ->addCheckbox('gibbonMessengerReceiptIDs[]')
                                 ->setValue($recipient['gibbonMessengerReceiptID'])

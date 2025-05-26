@@ -29,6 +29,7 @@ v30.0.00
     Changes With Important Notices
 
     Tweaks & Additions
+        Messenger: enabled resending to any recipient when read receipts are off in Send Report
         Reports: updated Attendance data source to handle Off Timetable days where no attendance is taken
         Reports: prevented deletion of template assets that are not set to inactive
         Planner: added a highlight for Off Timetable students in View Lesson Plan attendance list
