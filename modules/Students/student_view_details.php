@@ -2197,6 +2197,7 @@ if (isActionAccessible($guid, $connection2, '/modules/Students/student_view_deta
                                 $sqlDetail = "(SELECT DISTINCT surname, preferredName, email
                                     FROM gibbonPerson
                                         JOIN gibbonINAssistant ON (gibbonINAssistant.gibbonPersonIDAssistant=gibbonPerson.gibbonPersonID)
+                                        JOIN gibbonStaff ON (gibbonStaff.gibbonPersonID=gibbonPerson.gibbonPersonID)
                                     WHERE status='Full'
                                         AND gibbonPersonIDStudent=:gibbonPersonID1)
                                 UNION

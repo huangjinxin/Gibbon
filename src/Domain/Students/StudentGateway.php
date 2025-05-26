@@ -317,6 +317,7 @@ class StudentGateway extends QueryableGateway
                 SELECT DISTINCT '' as classID, gibbonPerson.gibbonPersonID, surname, preferredName, email, image_240, 'IN Assistant' as type, 2 as listOrder
                 FROM gibbonPerson
                     JOIN gibbonINAssistant ON (gibbonINAssistant.gibbonPersonIDAssistant=gibbonPerson.gibbonPersonID)
+                    JOIN gibbonStaff ON (gibbonStaff.gibbonPersonID=gibbonPerson.gibbonPersonID)
                 WHERE status='Full'
                     AND gibbonPersonIDStudent=:gibbonPersonID
             )
