@@ -155,10 +155,21 @@ if (isActionAccessible($guid, $connection2, '/modules/Staff/coverage_planner.php
                     return $coverage['contextName'].'<br/>'.Format::small(Format::timeRange($coverage['timeStart'], $coverage['timeEnd']));
                 };
 
-                $url = $coverage['context'] == 'Class'
-                    ? './index.php?q=/modules/Departments/department_course_class.php&gibbonDepartmentID='.$coverage['gibbonDepartmentID'].'&gibbonCourseID='.$coverage['gibbonCourseID'].'&gibbonCourseClassID='.$coverage['gibbonCourseClassID']
-                    : '';
-                return Format::link($url, $coverage['contextName']).'<br/>'.Format::small($coverage['space']);
+                $url = '';
+                $params = [];
+                switch ($coverage['context']) {
+                    case 'Class':
+                        $url = Url::fromModuleRoute('Departments', 'department_course_class')->withQueryParams(['gibbonDepartmentID' => $coverage['gibbonDepartmentID'], 'gibbonCourseID' => $coverage['gibbonCourseID'], 'gibbonCourseClassID' => $coverage['gibbonCourseClassID']]);
+                        break;
+
+                    case 'Activity':
+                        $url = Url::fromHandlerModuleRoute('fullscreen.php', 'Activities', 'activities_view_full')->withQueryParams(['gibbonActivityID' => $coverage['gibbonActivityID'], 'width' => 1000, 'height' => 500]);
+                        $params['class'] = 'thickbox';
+                        break;
+                }
+
+
+                return Format::link($url, $coverage['contextName'], $params).'<br/>'.Format::small($coverage['space']);
             });
 
         $table->addColumn('coverage', __('Substitute'))
