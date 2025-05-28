@@ -22,6 +22,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 use Gibbon\Forms\Form;
 use Gibbon\Services\Format;
 use Gibbon\Tables\DataTable;
+use Gibbon\Domain\User\UserGateway;
 use Gibbon\Forms\Prefab\BulkActionForm;
 use Gibbon\Domain\System\SettingGateway;
 use Gibbon\Module\Reports\Domain\ReportTemplateFontGateway;
@@ -138,13 +139,24 @@ if (isActionAccessible($guid, $connection2, '/modules/Reports/templates_assets.p
     $table->addColumn('type', __('Type'))->translatable();
     $table->addColumn('category', __('Category'))->translatable();
     $table->addColumn('status', __('Status'))
-        ->width('20%')
+        ->width('10%')
         ->notSortable()
         ->format(function ($template) {
             return '<span class="tag '.($template['statusClass'] ?? '').'" title="'.($template['statusTitle'] ?? '').'">'.$template['status'].'</span>';
         });
 
     $table->addColumn('active', __('Active'))->format(Format::using('yesNo', 'active'));
+
+    $userGateway = $container->get(UserGateway::class);
+    $table->addColumn('gibbonPersonIDLastEdit', __('Edited By'))
+            ->format(function ($row) use ($userGateway) {
+            if(empty($row['gibbonPersonIDLastEdit'])) {
+                return __('N/A');
+            }
+            $person = $userGateway->getByID($row['gibbonPersonIDLastEdit']);
+            $output = Format::name('', $person['preferredName'], $person['surname'], 'Staff', false, true);
+            return $output;
+        });
 
     $table->addActionColumn()
         ->addParam('gibbonReportPrototypeSectionID')
