@@ -21,6 +21,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 namespace Gibbon\View;
 
+use Gibbon\Contracts\Services\Session;
+
 /**
  * A utility class for simple templates written in pure PHP. Template files can
  * be placed next to classes, with paths provided as a class namespace.
@@ -38,13 +40,39 @@ class Component
     private static $environment = [];
 
     /**
+     * Load a set of globals into the environment for component templates to use.
+     *
+     * @param array $globals
+     * @return void
+     */
+    public static function setup(array $globals)
+    {
+        static::$environment = array_replace(static::$environment, $globals);
+    }
+
+    /**
+     * Helper method to load a set of globals directly from the session.
+     *
+     * @param Session $session
+     * @return void
+     */
+    public static function setupFromSession(Session $session)
+    {
+        $i18n = $session->get('i18n');
+
+        static::setup([
+            'rtl' => $i18n['rtl'] == 'Y',
+        ]);
+    }
+
+    /**
      * Provide a template path and set of environment variables for rendered templates.
      * @param string $path
      * @param array $environment
      */
     public static function withEnvironment(string $path = '', array $environment = [])
     {
-        static::$path = rtrim($path, '/').'/';
+        static::$path = !empty($path) ? rtrim($path, '/').'/' : '';
         static::$environment = $environment;
     }
 

@@ -21,6 +21,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 namespace Gibbon;
 
+use Gibbon\View\Component;
 use Gibbon\Services\Format;
 use Gibbon\Session\SessionFactory;
 use Gibbon\Support\Facades\Facade;
@@ -98,7 +99,8 @@ class Core
 
         Facade::setFacadeContainer($container);
         Format::setupFromSession($this->session);
-
+        Component::setupFromSession($this->session);
+        
         $installType = $this->session->get('installType');
         if (empty($installType) || $installType == 'Production') {
             ini_set('display_errors', 0);
