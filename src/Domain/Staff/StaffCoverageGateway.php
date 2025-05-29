@@ -393,6 +393,40 @@ class StaffCoverageGateway extends QueryableGateway
         return $this->db()->selectOne($sql, $data);
     }
 
+    public function getStaffDutyCoverageByID($gibbonStaffDutyPersonID, $date)
+    {
+        $data = ['gibbonStaffDutyPersonID' => $gibbonStaffDutyPersonID, 'date' => $date];
+        $sql = "SELECT gibbonStaffCoverage.gibbonStaffCoverageID, gibbonStaffCoverage.status, 
+                gibbonStaffCoverage.gibbonPersonIDCoverage, coverage.title, coverage.preferredName, coverage.surname
+            FROM gibbonStaffCoverage
+            JOIN gibbonStaffCoverageDate ON (gibbonStaffCoverageDate.gibbonStaffCoverageID=gibbonStaffCoverage.gibbonStaffCoverageID)
+            JOIN gibbonStaffDutyPerson ON (gibbonStaffDutyPerson.gibbonStaffDutyPersonID=gibbonStaffCoverageDate.foreignTableID AND gibbonStaffCoverageDate.foreignTable='gibbonStaffDutyPerson')
+            LEFT JOIN gibbonPerson AS coverage ON (gibbonStaffCoverage.gibbonPersonIDCoverage=coverage.gibbonPersonID)
+            WHERE gibbonStaffDutyPerson.gibbonStaffDutyPersonID=:gibbonStaffDutyPersonID
+            AND gibbonStaffCoverageDate.date=:date
+            GROUP BY gibbonStaffCoverage.gibbonStaffCoverageID
+            ";
+
+        return $this->db()->selectOne($sql, $data);
+    }
+
+    public function getActivityCoverageByID($gibbonActivitySlotID, $date)
+    {
+        $data = ['gibbonActivitySlotID' => $gibbonActivitySlotID, 'date' => $date];
+        $sql = "SELECT gibbonStaffCoverage.gibbonStaffCoverageID, gibbonStaffCoverage.status, 
+                gibbonStaffCoverage.gibbonPersonIDCoverage, coverage.title, coverage.preferredName, coverage.surname
+            FROM gibbonStaffCoverage
+            JOIN gibbonStaffCoverageDate ON (gibbonStaffCoverageDate.gibbonStaffCoverageID=gibbonStaffCoverage.gibbonStaffCoverageID)
+            JOIN gibbonActivitySlot ON (gibbonActivitySlot.gibbonActivitySlotID=gibbonStaffCoverageDate.foreignTableID AND gibbonStaffCoverageDate.foreignTable='gibbonActivitySlot')
+            LEFT JOIN gibbonPerson AS coverage ON (gibbonStaffCoverage.gibbonPersonIDCoverage=coverage.gibbonPersonID)
+            WHERE gibbonActivitySlot.gibbonActivitySlotID=:gibbonActivitySlotID
+            AND gibbonStaffCoverageDate.date=:date
+            GROUP BY gibbonStaffCoverage.gibbonStaffCoverageID
+            ";
+
+        return $this->db()->selectOne($sql, $data);
+    }
+
     public function selectTimetableRowsByCoverageDate($gibbonStaffCoverageID, $date)
     {
         $data = ['gibbonStaffCoverageID' => $gibbonStaffCoverageID, 'date' => $date];

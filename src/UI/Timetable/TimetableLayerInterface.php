@@ -33,6 +33,8 @@ interface TimetableLayerInterface
 {
     public function getName() : string;
 
+    public function getID() : string;
+
     public function getOrder() : int;
     
     public function getColor() : string;
@@ -43,11 +45,17 @@ interface TimetableLayerInterface
 
     public function setActive(bool $active);
 
+    public function createItem(string $date, bool $allDay = false) : TimetableItem;
+
+    public function addItem(TimetableItem $item);
+
+    public function updateItem(TimetableItem $item, string $status);
+
     public function getItems() : array;
 
     public function getItemsByDate(string $date, bool $allDay = false) : array;
 
-    public function countItems();
+    public function countItems() : int;
 
     public function filterItems(callable $callback);
 

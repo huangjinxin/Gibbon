@@ -215,7 +215,7 @@ class Timetable implements OutputableInterface
                 if ($layer->getType() == 'timetabled' && !empty($absences)) {
                     foreach ($absences as $absence) {
                         if ($item->checkOverlap($absence)) {
-                            $item->addStatus('absent')->set('style', 'stripe');
+                            $layer->updateItem($item, 'absent');
                         }
                     }
                 }

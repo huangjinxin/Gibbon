@@ -34,6 +34,7 @@ class TimetableItem
     protected $active = true;
     protected $statuses;
 
+    protected $id;
     protected $label;
     protected $title;
     protected $subtitle;
@@ -156,6 +157,7 @@ class TimetableItem
      */
     public function loadData(array $data)
     {
+        $this->id = $data['id'] ?? $this->id;
         $this->title = $data['title'] ?? $this->title;
         $this->label = $data['label'] ?? $this->label;
         $this->subtitle = $data['subtitle'] ?? $this->subtitle;

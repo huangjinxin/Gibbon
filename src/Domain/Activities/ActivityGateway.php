@@ -187,7 +187,7 @@ class ActivityGateway extends QueryableGateway
             ->newSelect()
             ->from($this->getTableName())
             ->cols([
-                'gibbonActivity.gibbonActivityID', 'gibbonActivity.name', 'gibbonActivity.provider', 'gibbonPerson.gibbonPersonID', 'gibbonActivitySlot.timeStart', 'gibbonActivitySlot.timeEnd', 'gibbonActivitySlot.locationExternal', 'gibbonSpace.name as space', 'gibbonDaysOfWeek.name as dayOfWeek',
+                'gibbonActivity.gibbonActivityID', 'gibbonActivitySlot.gibbonActivitySlotID', 'gibbonActivity.name', 'gibbonActivity.provider', 'gibbonPerson.gibbonPersonID', 'gibbonActivitySlot.timeStart', 'gibbonActivitySlot.timeEnd', 'gibbonActivitySlot.locationExternal', 'gibbonSpace.name as space', 'gibbonDaysOfWeek.name as dayOfWeek',
             ])
             ->innerJoin('gibbonActivitySlot', 'gibbonActivitySlot.gibbonActivityID=gibbonActivity.gibbonActivityID')
             ->leftJoin('gibbonActivityCategory', 'gibbonActivityCategory.gibbonActivityCategoryID=gibbonActivity.gibbonActivityCategoryID')
@@ -218,7 +218,7 @@ class ActivityGateway extends QueryableGateway
         $query->unionAll()
             ->from($this->getTableName())
             ->cols([
-                'gibbonActivity.gibbonActivityID', 'gibbonActivity.name', 'gibbonActivity.provider', 'gibbonPerson.gibbonPersonID', 'gibbonActivitySlot.timeStart', 'gibbonActivitySlot.timeEnd', 'gibbonActivitySlot.locationExternal', 'gibbonSpace.name as space', 'gibbonDaysOfWeek.name as dayOfWeek',
+                'gibbonActivity.gibbonActivityID', 'gibbonActivitySlot.gibbonActivitySlotID', 'gibbonActivity.name', 'gibbonActivity.provider', 'gibbonPerson.gibbonPersonID', 'gibbonActivitySlot.timeStart', 'gibbonActivitySlot.timeEnd', 'gibbonActivitySlot.locationExternal', 'gibbonSpace.name as space', 'gibbonDaysOfWeek.name as dayOfWeek',
             ])
             ->innerJoin('gibbonActivitySlot', 'gibbonActivitySlot.gibbonActivityID=gibbonActivity.gibbonActivityID')
             ->innerJoin('gibbonDaysOfWeek', 'gibbonActivitySlot.gibbonDaysOfWeekID=gibbonDaysOfWeek.gibbonDaysOfWeekID')
@@ -252,7 +252,7 @@ class ActivityGateway extends QueryableGateway
             ->newSelect()
             ->from($this->getTableName())
             ->cols([
-                'gibbonActivity.gibbonActivityID', 'gibbonActivity.name', 'gibbonActivity.provider', 'gibbonSpace.gibbonSpaceID', 'gibbonActivitySlot.timeStart', 'gibbonActivitySlot.timeEnd', 'gibbonActivitySlot.locationExternal', 'gibbonSpace.name as space', 'gibbonDaysOfWeek.name as dayOfWeek',
+                'gibbonActivity.gibbonActivityID', 'gibbonActivitySlot.gibbonActivitySlotID', 'gibbonActivity.name', 'gibbonActivity.provider', 'gibbonSpace.gibbonSpaceID', 'gibbonActivitySlot.timeStart', 'gibbonActivitySlot.timeEnd', 'gibbonActivitySlot.locationExternal', 'gibbonSpace.name as space', 'gibbonDaysOfWeek.name as dayOfWeek',
             ])
             ->innerJoin('gibbonActivitySlot', 'gibbonActivitySlot.gibbonActivityID=gibbonActivity.gibbonActivityID')
             ->innerJoin('gibbonDaysOfWeek', 'gibbonActivitySlot.gibbonDaysOfWeekID=gibbonDaysOfWeek.gibbonDaysOfWeekID')
