@@ -149,7 +149,7 @@ class StaffCoverageDateGateway extends QueryableGateway
             ->where('gibbonStaffDutyPerson.gibbonPersonID=:gibbonPersonID')
             ->bindValue('gibbonPersonID', $gibbonPersonID)
             ->where('gibbonPerson.status="Full"')
-            ->where('(gibbonDaysOfWeek.gibbonDaysOfWeekID-1) BETWEEN WEEKDAY(:dateStart) AND WEEKDAY(:dateEnd)')
+            ->having('`date` BETWEEN :dateStart AND :dateEnd')
             ->bindValues(['dateStart' => $dateStart, 'dateEnd' => $dateEnd]);
 
         $query->unionAll()
@@ -173,7 +173,7 @@ class StaffCoverageDateGateway extends QueryableGateway
             ->where('gibbonActivity.active="Y"')
             ->where('gibbonPerson.status="Full"')
             ->where('gibbonActivity.active="Y"')
-            ->where('(gibbonDaysOfWeek.gibbonDaysOfWeekID-1) BETWEEN WEEKDAY(:dateStart) AND WEEKDAY(:dateEnd)')
+            ->having('`date` BETWEEN :dateStart AND :dateEnd')
             ->bindValues(['dateStart' => $dateStart, 'dateEnd' => $dateEnd]);
 
             if ($activityDateType == 'Term') {

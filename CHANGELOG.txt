@@ -41,6 +41,7 @@ v30.0.00
         Timetable: added coverage details for staff duty and activities on the timetable
 
     Bug Fixes
+        Staff: fixed coverage longer than one week not including staff duty and activity cover
         System: fixed toggle field direction for right-to-left languages
         Messenger: fixed missing From address on emails when using the Add Recipient action in Send Report
 
