@@ -28,6 +28,9 @@ v30.0.00
 
     Changes With Important Notices
 
+        System: removed the i18n submodule. Translation files are now
+        embedded in the core and Chinese (zh_CN) is the default locale
+
     Tweaks & Additions
         Individual Needs: enabled viewing IN records for past students as read-only
         Messenger: enabled resending to any recipient when read receipts are off in Send Report
