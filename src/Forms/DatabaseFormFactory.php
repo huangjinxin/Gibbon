@@ -309,12 +309,19 @@ class DatabaseFormFactory extends FormFactory
         $sql = "SELECT * FROM gibboni18n WHERE active='Y' ORDER BY code";
         $results = $this->pdo->select($sql);
 
-        $values = array_reduce($results->fetchAll(), function ($group, $item) {
-            if (isset($item['installed']) && $item['installed'] == 'Y') {
-                $group[$item['gibboni18nID']] = $item['systemDefault'] == 'Y'? $item['name'].' ('.__('System Default').')' : $item['name'];
+        global $session;
+        $absolutePath = $session->get('absolutePath');
+
+        $values = [];
+        foreach ($results->fetchAll() as $item) {
+            $installed = isset($item['installed']) && $item['installed'] == 'Y';
+            $filePath = $absolutePath.'/i18n/'.$item['code'].'/LC_MESSAGES/gibbon.mo';
+            if ($installed || file_exists($filePath)) {
+                $values[$item['gibboni18nID']] = $item['systemDefault'] == 'Y'
+                    ? $item['name'].' ('.__('System Default').')'
+                    : $item['name'];
             }
-            return $group;
-        }, []);
+        }
 
         return $this->createSelect($name)->fromArray($values)->placeholder();
     }

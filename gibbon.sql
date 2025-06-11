@@ -2555,10 +2555,10 @@ CREATE TABLE `gibboni18n` (
 --
 
 INSERT INTO `gibboni18n` (`gibboni18nID`, `code`, `name`, `version`, `active`, `installed`, `systemDefault`, `dateFormat`, `dateFormatRegEx`, `dateFormatPHP`, `rtl`) VALUES
-(0001, 'en_GB', 'English - United Kingdom', NULL, 'Y', 'N', 'Y', 'dd/mm/yyyy', '/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$/i', 'd/m/Y', 'N'),
+(0001, 'en_GB', 'English - United Kingdom', NULL, 'Y', 'N', 'N', 'dd/mm/yyyy', '/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$/i', 'd/m/Y', 'N'),
 (0002, 'en_US', 'English - United States', NULL, 'Y', 'N', 'N', 'mm/dd/yyyy', '/(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20\\d\\d)/', 'm/d/Y', 'N'),
 (0003, 'es_ES', 'Español - España', NULL, 'Y', 'N', 'N', 'dd/mm/yyyy', '/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$/i', 'd/m/Y', 'N'),
-(0004, 'zh_CN', '汉语 - 中国', NULL, 'Y', 'N', 'N', 'yyyy-mm-dd', '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', 'Y-m-d', 'N'),
+(0004, 'zh_CN', '汉语 - 中国', NULL, 'Y', 'Y', 'Y', 'yyyy-mm-dd', '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', 'Y-m-d', 'N'),
 (0005, 'zh_HK', '繁體字 - 香港', NULL, 'Y', 'N', 'N', 'dd/mm/yyyy', '/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$/i', 'd/m/Y', 'N'),
 (0007, 'pl_PL', 'Język polski - Polska', NULL, 'Y', 'N', 'N', 'dd/mm/yyyy', '/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$/i', 'd/m/Y', 'N'),
 (0008, 'it_IT', 'Italiano - Italia', NULL, 'Y', 'N', 'N', 'dd/mm/yyyy', '/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$/i', 'd/m/Y', 'N'),
