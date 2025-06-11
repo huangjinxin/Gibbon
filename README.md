@@ -39,6 +39,12 @@ Without these files, language switching may not work as expected.
 
 Thanks to our amazing volunteers, Gibbon is available in many different languages. We use the online tool [POEditor](https://poeditor.com), which enables our volunteer translators to collaborate and track their translation progress. Huge thanks to POEditor for their support of open source projects and making this tool available for our community. If you would like to help translate Gibbon, please email support@gibbonedu.org and [learn more here](https://gibbonedu.org/about/#languages). Your help would be most appreciated!
 
+If language switching does not appear to take effect, ensure your operating system has the matching locale installed (e.g. `zh_CN.UTF-8`). On Debian-based systems this can be done with:
+
+```bash
+sudo locale-gen zh_CN.UTF-8
+```
+
 ## Contributing
 
 We welcome community contribution and aim to ensure Gibbon is an open and friendly environment. Information about contributing, submitting issues, and pull requests can be found in the following docs:
