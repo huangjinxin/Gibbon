@@ -27,6 +27,14 @@ If you want to run the latest version of Gibbon, prerelease, you can get the sou
 
 For installation instructions, be sure to follow the instructions for [Cutting Edge Code](https://docs.gibbonedu.org/introduction/installation-options/cutting-edge-code).
 
+After cloning the repository, run the following command to initialise the `i18n` submodule which contains all of Gibbon's language files:
+
+```
+git submodule update --init --recursive
+```
+
+Without these files, language switching may not work as expected.
+
 ## Translation
 
 Thanks to our amazing volunteers, Gibbon is available in many different languages. We use the online tool [POEditor](https://poeditor.com), which enables our volunteer translators to collaborate and track their translation progress. Huge thanks to POEditor for their support of open source projects and making this tool available for our community. If you would like to help translate Gibbon, please email support@gibbonedu.org and [learn more here](https://gibbonedu.org/about/#languages). Your help would be most appreciated!
